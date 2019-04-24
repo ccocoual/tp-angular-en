@@ -15,22 +15,9 @@
     </div>
   </div>
   <div class="row text-center">
-    <app-product
-      [data]="products[0]"
-      (addToBasket)="updatePrice($event)"
-    ></app-product>
-    <app-product
-      [data]="products[1]"
-      (addToBasket)="updatePrice($event)"
-    ></app-product>
-    <app-product
-      [data]="products[2]"
-      (addToBasket)="updatePrice($event)"
-    ></app-product>
-    <app-product
-      [data]="products[3]"
-      (addToBasket)="updatePrice($event)"
-    ></app-product>
+    <ng-container *ngFor="let product of products">
+      <app-product *ngIf="product.stock > 0" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
+    </ng-container>
   </div>
 
   <hr />
