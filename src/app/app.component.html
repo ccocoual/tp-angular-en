@@ -1,20 +1,73 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<app-menu></app-menu>
 
+<div class="container">
+  <header class="jumbotron hero-spacer">
+    <h1>Welcome to Zenika E-Shop</h1>
+    <p>Your basket amounts to {{ total }}$</p>
+    <p><a class="btn btn-primary btn-large">See my basket</a></p>
+  </header>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Last products</h2>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-3 col-sm-6 product-item">
+      <div class="thumbnail">
+        <img [src]="products[0].photo" alt="" />
+        <div class="caption">
+          <h3>{{ products[0].title }} - {{ products[0].price }}$</h3>
+          <p>{{ products[0].description }}</p>
+          <p>
+            <button class="btn btn-primary">Add to basket</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 product-item">
+      <div class="thumbnail">
+        <img [src]="products[1].photo" alt="" />
+        <div class="caption">
+          <h3>{{ products[1].title }} - {{ products[1].price }}$</h3>
+          <p>{{ products[1].description }}</p>
+          <p>
+            <button class="btn btn-primary">Add to basket</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 product-item">
+      <div class="thumbnail">
+        <img [src]="products[2].photo" alt="" />
+        <div class="caption">
+          <h3>{{ products[2].title }} - {{ products[2].price }}$</h3>
+          <p>{{ products[2].description }}</p>
+          <p>
+            <button class="btn btn-primary">Add to basket</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 product-item">
+      <div class="thumbnail">
+        <img [src]="products[3].photo" alt="" />
+        <div class="caption">
+          <h3>{{ products[3].title }} - {{ products[3].price }}$</h3>
+          <p>{{ products[3].description }}</p>
+          <p>
+            <button class="btn btn-primary">Add to basket</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <footer>
+    Copyright &copy; Your Website 2019
+  </footer>
+</div>
