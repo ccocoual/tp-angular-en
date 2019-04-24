@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductComponent } from './product.component';
 import { Product } from '../model/product';
 
-const testProduct = new Product('title', 'description', 'photo', 42);
+const testProduct = new Product('title', 'description', 'photo', 42, 2);
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -38,5 +38,19 @@ describe('ProductComponent', () => {
     const button = fixture.nativeElement.querySelector('button');
     button.click();
     expect(component.addToBasket.emit).toHaveBeenCalled();
+  });
+
+  it('should not add "last" class if stock > 1', () => {
+    component.data.stock = 2;
+    fixture.detectChanges();
+    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
+    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
+  });
+
+  it('should add "last" class if stock == 1', () => {
+    component.data.stock = 1;
+    fixture.detectChanges();
+    const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
+    expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(true);
   });
 });
