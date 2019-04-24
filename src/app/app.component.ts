@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private customerService: CustomerService,
-    @Inject('appTitle') public title: String
+    @Inject('appTitle') private title: String
   ) {}
 
   ngOnInit() {
