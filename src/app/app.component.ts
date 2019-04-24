@@ -39,4 +39,8 @@ export class AppComponent {
       price: 12.5
     }
   ];
+
+  updatePrice(product: Product) {
+    this.total += product.price;
+  }
 }

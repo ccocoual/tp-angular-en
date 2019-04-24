@@ -15,54 +15,22 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="col-md-3 col-sm-6 product-item">
-      <div class="thumbnail">
-        <img [src]="products[0].photo" alt="" />
-        <div class="caption">
-          <h3>{{ products[0].title }} - {{ products[0].price }}$</h3>
-          <p>{{ products[0].description }}</p>
-          <p>
-            <button class="btn btn-primary">Add to basket</button>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <div class="thumbnail">
-        <img [src]="products[1].photo" alt="" />
-        <div class="caption">
-          <h3>{{ products[1].title }} - {{ products[1].price }}$</h3>
-          <p>{{ products[1].description }}</p>
-          <p>
-            <button class="btn btn-primary">Add to basket</button>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <div class="thumbnail">
-        <img [src]="products[2].photo" alt="" />
-        <div class="caption">
-          <h3>{{ products[2].title }} - {{ products[2].price }}$</h3>
-          <p>{{ products[2].description }}</p>
-          <p>
-            <button class="btn btn-primary">Add to basket</button>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <div class="thumbnail">
-        <img [src]="products[3].photo" alt="" />
-        <div class="caption">
-          <h3>{{ products[3].title }} - {{ products[3].price }}$</h3>
-          <p>{{ products[3].description }}</p>
-          <p>
-            <button class="btn btn-primary">Add to basket</button>
-          </p>
-        </div>
-      </div>
-    </div>
+    <app-product
+      [data]="products[0]"
+      (addToBasket)="updatePrice($event)"
+    ></app-product>
+    <app-product
+      [data]="products[1]"
+      (addToBasket)="updatePrice($event)"
+    ></app-product>
+    <app-product
+      [data]="products[2]"
+      (addToBasket)="updatePrice($event)"
+    ></app-product>
+    <app-product
+      [data]="products[3]"
+      (addToBasket)="updatePrice($event)"
+    ></app-product>
   </div>
 
   <hr />
