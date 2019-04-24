@@ -6,15 +6,14 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    ProductComponent
+  declarations: [AppComponent, MenuComponent, ProductComponent],
+  imports: [BrowserModule],
+  providers: [
+    {
+      provide: 'appTitle',
+      useValue: 'Welcome to Zenika E-Shop',
+    },
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
