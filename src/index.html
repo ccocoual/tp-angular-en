@@ -1,14 +1,119 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>TpAngularEn</title>
-  <base href="/">
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <style>
+      body {
+          padding-top: 70px;
+      }
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+      .hero-spacer {
+          margin-top: 50px;
+      }
+
+      .product-item {
+          margin-bottom: 30px;
+      }
+
+      .thumbnail .caption {
+          height: 215px;
+      }
+
+      footer {
+          margin: 50px 0;
+      }
+    </style>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Zenika Ecommerce</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">See my basket</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+      <header class="jumbotron hero-spacer">
+        <h1>Welcome to Zenika E-Shop</h1>
+        <p>Your basket amounts to {{total}}$</p>
+        <p><a class="btn btn-primary btn-large">See my basket</a></p>
+      </header>
+
+      <hr>
+
+      <div class="row">
+          <div class="col-lg-12">
+              <h2>Last products</h2>
+          </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-3 col-sm-6 product-item">
+            <div class="thumbnail">
+                <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5acf344514006a7fe670e2eb/Mockups/front.png" alt="">
+                <div class="caption">
+                    <h3>Men Sweatshirt - 39$</h3>
+                    <p>BIO C0D1NG_TH3_W0RLD HOODIE - MEN</p>
+                    <p>
+                        <button class="btn btn-primary">Add to basket</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 product-item">
+            <div class="thumbnail">
+                <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5b2911e4ab33424aec592bd6/Mockups/front.png" alt="">
+                <div class="caption">
+                    <h3>Men T-Shirt - 19$</h3>
+                    <p>BIO T-SHIRT WITH CREWNECK - MEN.</p>
+                    <p>
+                        <button class="btn btn-primary">Add to basket</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 product-item">
+            <div class="thumbnail">
+                <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5b290d26ab33424aec592bd4/Mockups/front.png" alt="">
+                <div class="caption">
+                    <h3>T-Shirt women - 30$</h3>
+                    <p>BIO T-SHIRT WITH CREWNECK - WOMEN.</p>
+                    <p>
+                        <button class="btn btn-primary">Add to basket</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 product-item">
+            <div class="thumbnail">
+                <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5acf160814006a7fe670e2dd/Mockups/front.png" alt="">
+                <div class="caption">
+                    <h3>Tote bag - 12,50$</h3>
+                    <p>C0D1NG_TH3_W0RLD, BIO TOTE BAG.</p>
+                    <p>
+                        <button class="btn btn-primary">Add to basket</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+          Copyright &copy; Your Website 2019
+      </footer>
+
+    </div>
+  </body>
 </html>
