@@ -3,7 +3,7 @@
 <div class="container">
   <header class="jumbotron hero-spacer">
     <h1>{{ title }}</h1>
-    <p>Your basket amounts to {{ getTotal() }}$</p>
+    <p>Your basket amounts to {{ getTotal() | currency: 'CAD':'symbol':'1.2-2' }}</p>
     <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
 
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row text-center">
-    <ng-container *ngFor="let product of products">
+    <ng-container *ngFor="let product of products | sort">
       <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
     </ng-container>
   </div>
