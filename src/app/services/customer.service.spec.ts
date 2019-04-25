@@ -4,8 +4,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { CustomerService } from './customer.service';
 import { Product } from '../model/product';
 
-const product1 = new Product('', '', '', 42, 0);
-const product2 = new Product('', '', '', 666, 0);
+const product1 = new Product('', '', '', '', 42, 0);
+const product2 = new Product('', '', '', '', 666, 0);
 
 describe('CustomerService', () => {
   let service: CustomerService;
@@ -26,7 +26,7 @@ describe('CustomerService', () => {
   });
 
   it('should load the basket from the server on getBasket', () => {
-    const mockedResponse = [new Product('abc', '', '', 0, 0), new Product('def', '', '', 0, 0)];
+    const mockedResponse = [new Product('abcID', 'abc', '', '', 0, 0), new Product('defID', 'def', '', '', 0, 0)];
     service.getBasket().subscribe(() => {
       expect(service.basket.length).toBe(2);
     });

@@ -24,4 +24,8 @@ export class ProductComponent {
   goToProductDetail() {
     this.router.navigate(['product', this.data.id]);
   }
+
+  isTheLast(): boolean {
+    return this.productService.isTheLast(this.data);
+  }
 }

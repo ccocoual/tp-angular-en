@@ -2,17 +2,29 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductComponent } from './product.component';
 import { Product } from '../model/product';
+import { ProductService } from '../services/product.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
-const testProduct = new Product('title', 'description', 'photo', 42, 2);
+const testProduct = new Product('id', 'title', 'description', 'photo', 42, 3);
+
+class ProductServiceMock {
+  isTheLast() {
+    return true;
+  }
+}
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
   let fixture: ComponentFixture<ProductComponent>;
+  let productService: ProductService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductComponent],
+      imports: [RouterTestingModule],
+      providers: [{ provide: ProductService, useClass: ProductServiceMock }],
     }).compileComponents();
+    productService = TestBed.get(ProductService);
   }));
 
   beforeEach(() => {
@@ -41,16 +53,18 @@ describe('ProductComponent', () => {
   });
 
   it('should not add "last" class if stock > 1', () => {
-    component.data.stock = 2;
+    spyOn(productService, 'isTheLast').and.returnValue(false);
     fixture.detectChanges();
     const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
     expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(false);
+    expect(productService.isTheLast).toHaveBeenCalled();
   });
 
   it('should add "last" class if stock == 1', () => {
-    component.data.stock = 1;
+    spyOn(productService, 'isTheLast').and.returnValue(true);
     fixture.detectChanges();
     const thumbnail = fixture.nativeElement.querySelector('.thumbnail');
     expect(Array.prototype.includes.call(thumbnail.classList, 'last')).toBe(true);
+    expect(productService.isTheLast).toHaveBeenCalled();
   });
 });
