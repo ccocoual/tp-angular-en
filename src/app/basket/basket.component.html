@@ -1,3 +1,70 @@
-<div>
-  {{ basket | json }}
+<h3>Commande</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Panier</div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of basket">
+          {{ product.title }}
+          <span class="label label-primary pull-right">{{ product.price | currency: 'CAD' }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <form (submit)="checkout()" #customerForm="ngForm" novalidate>
+      <div class="form-group" [class.has-error]="nameInput.invalid">
+        <label for="name">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          placeholder="Nom"
+          [(ngModel)]="customer.name"
+          #nameInput="ngModel"
+          aria-describedby="helpName"
+          required
+        />
+        <span id="helpName" class="help-block" *ngIf="nameInput.invalid">
+          Le nom est requis
+        </span>
+      </div>
+      <div class="form-group" [class.has-error]="addressInput.invalid">
+        <label for="address">Adresse</label>
+        <textarea
+          class="form-control"
+          name="address"
+          id="address"
+          placeholder="Adresse"
+          [(ngModel)]="customer.address"
+          #addressInput="ngModel"
+          aria-describedby="helpAddress"
+          required
+        ></textarea>
+        <span id="helpAddress" class="help-block" *ngIf="addressInput.invalid">
+          L'addresse est requise
+        </span>
+      </div>
+      <div class="form-group" [class.has-error]="creditCardInput.invalid">
+        <label for="creditCard">Carte de crédit</label>
+        <input
+          type="text"
+          class="form-control"
+          name="creditCard"
+          id="creditCard"
+          placeholder="Carte de crédit"
+          [(ngModel)]="customer.creditCard"
+          #creditCardInput="ngModel"
+          pattern="^[0-9]{3}-[0-9]{3}$"
+          aria-describedby="helpCreditCard"
+          required
+        />
+        <span id="helpCreditCard" class="help-block" *ngIf="creditCardInput.invalid">
+          Le numéro de carte de crédit ne respecte pas le bon format. Exemple: 123-456
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">Commander</button>
+    </form>
+  </div>
 </div>

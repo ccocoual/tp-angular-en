@@ -1,8 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
-import { Product } from '../model/product';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+
+import { Product } from '../model/product';
+import { Customer } from '../model/customer';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +25,10 @@ export class CustomerService {
       ),
       tap(products => (this.basket = products))
     );
+  }
+
+  checkout(customer: Customer) {
+    return this.http.post(`${this.API_URL}/confirm`, customer);
   }
 
   isBasketFilled(): Observable<boolean> {
