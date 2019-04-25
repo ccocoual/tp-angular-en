@@ -12,11 +12,12 @@ import { CustomerService } from './services/customer.service';
 export class AppComponent implements OnInit {
   total = 0;
   products: Product[] = [];
+  sortKey: keyof Product = 'title';
 
   constructor(
     private productService: ProductService,
     private customerService: CustomerService,
-    @Inject('appTitle') private title: String
+    @Inject('appTitle') public title: String
   ) {}
 
   ngOnInit() {
