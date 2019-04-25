@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
@@ -26,12 +26,19 @@ class CustomerServiceMock {
   addProduct() {}
 }
 
+@Pipe({ name: 'sort' })
+class SortPipe implements PipeTransform {
+  transform(value) {
+    return value;
+  }
+}
+
 describe('AppComponent', () => {
   let customerService: CustomerService;
   let productService: ProductService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent, SortPipe],
       providers: [
         { provide: ProductService, useClass: ProductServiceMock },
         { provide: CustomerService, useClass: CustomerServiceMock },
