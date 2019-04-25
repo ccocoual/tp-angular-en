@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
 
 import localeEnCa from '@angular/common/locales/en-CA';
@@ -34,7 +35,7 @@ const routes: Routes = [
     BasketComponent,
     ProductDetailComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     {
