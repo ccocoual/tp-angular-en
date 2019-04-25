@@ -22,4 +22,11 @@ describe('SortPipe', () => {
     ];
     expect(pipe.transform(data, 'title')).toEqual(expected);
   });
+
+  it('should return null if data is undefined', () => {
+    const pipe = new SortPipe();
+    const data = undefined;
+    const expected = null;
+    expect(pipe.transform(data, 'title')).toEqual(expected);
+  });
 });
