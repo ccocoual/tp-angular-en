@@ -19,10 +19,15 @@ export class ProductService {
       .pipe(
         map((products: any[]) =>
           products.map(
-            product => new Product(product.title, product.description, product.photo, product.price, product.stock)
+            product =>
+              new Product(product.id, product.title, product.description, product.photo, product.price, product.stock)
           )
         )
       );
+  }
+
+  getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.API_URL}/${id}`);
   }
 
   isTheLast(product: Product): boolean {

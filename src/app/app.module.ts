@@ -13,13 +13,27 @@ import { ProductComponent } from './product/product.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { HomeComponent } from './home/home.component';
 import { BasketComponent } from './basket/basket.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { BasketGuard } from './guards/basket.guard';
 
 const API_BASE_URL: string = 'http://localhost:8080/rest';
 
-const routes: Routes = [{ path: '', component: HomeComponent }, { path: 'basket', component: BasketComponent }];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'basket', component: BasketComponent, canActivate: [BasketGuard] },
+];
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, ProductComponent, SortPipe, HomeComponent, BasketComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    ProductComponent,
+    SortPipe,
+    HomeComponent,
+    BasketComponent,
+    ProductDetailComponent,
+  ],
   imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
