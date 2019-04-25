@@ -11,7 +11,7 @@ import { CustomerService } from './services/customer.service';
 })
 export class AppComponent implements OnInit {
   total = 0;
-  products: Product[] = [];
+  products: Product[];
   sortKey: keyof Product = 'title';
 
   constructor(
@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe(products => (this.products = products));
+    this.customerService.getBasket().subscribe();
   }
 
   getTotal() {
@@ -32,8 +33,7 @@ export class AppComponent implements OnInit {
     return this.productService.isAvailable(product);
   }
 
-  updatePrice(product: Product) {
-    this.productService.decreaseStock(product);
-    this.customerService.addProduct(product);
+  updatePrice(event) {
+    this.customerService.addProduct(event).subscribe(() => this.productService.decreaseStock(event));
   }
 }
