@@ -1,34 +1,9 @@
 <app-menu></app-menu>
-
 <div class="container">
-  <header class="jumbotron hero-spacer">
-    <h1>{{ title }}</h1>
-    <p>Your basket amounts to {{ getTotal() | currency: 'CAD':'symbol':'1.2-2' }}</p>
-    <p><a class="btn btn-primary btn-large">See my basket</a></p>
-  </header>
-
-  <hr />
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Last products</h2>
-      Triez par :
-      <div class="btn-group" role="group">
-        <button class="btn btn-default" (click)="sortKey = 'title'">Title</button>
-        <button class="btn btn-default" (click)="sortKey = 'price'">Prix</button>
-        <button class="btn btn-default" (click)="sortKey = 'stock'">Stock</button>
-      </div>
-    </div>
-  </div>
-  <div class="row text-center">
-    <ng-container *ngFor="let product of products | sort: sortKey">
-      <app-product *ngIf="isAvailable(product)" [data]="product" (addToBasket)="updatePrice($event)"></app-product>
-    </ng-container>
-  </div>
-
+  <router-outlet></router-outlet>
   <hr />
 
   <footer>
-    Copyright &copy; Your Website 2019
+    Copyright &copy; Your Website 2016
   </footer>
 </div>
