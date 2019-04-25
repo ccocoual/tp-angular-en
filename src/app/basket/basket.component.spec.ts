@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { of } from 'rxjs';
 
 import { BasketComponent } from './basket.component';
+import { CustomerService } from '../services/customer.service';
+
+class CustomerServiceMock {
+  getBasket() {
+    return of();
+  }
+}
 
 describe('BasketComponent', () => {
   let component: BasketComponent;
@@ -9,6 +18,8 @@ describe('BasketComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BasketComponent],
+      imports: [RouterModule.forRoot([], { useHash: true })],
+      providers: [{ provide: CustomerService, useClass: CustomerServiceMock }],
     }).compileComponents();
   }));
 
@@ -18,7 +29,7 @@ describe('BasketComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });
